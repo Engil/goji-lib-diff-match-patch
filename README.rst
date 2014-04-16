@@ -1,4 +1,4 @@
-oj-diff-match-patch
+goji-lib-diff-match-patch
 ===================
 
 This library is a simple js_of_ocaml binding to Google's diff-match-patch_ library, using Goji_
