@@ -81,6 +81,21 @@ let _ =
           curry_arg ~doc:"Text" "text" (string @@ arg 0);
           curry_arg ~doc:"Array of diffs" "diffs" (array (abbrv "diff") @@ arg 1)
         ]
-        (array (abbrv "patch"))
+        (array (abbrv "patch"));
+      def_method "dmp" "string_of_patches"
+        ~doc:"Produce a string from a patch array"
+        [curry_arg ~doc:"Array of patches" "patches" (array (abbrv "patch") @@ arg 0)]
+        (call_method "patch_toText") string;
+      def_method "dmp" "patches_of_string"
+        ~doc:"Produce a patches array from a diff-match-patch formatted string"
+        [curry_arg ~doc:"String representing the patches" "patch_string" (string @@ arg 0)]
+        (call_method "patch_fromText") (array (abbrv "patch"));
+      map_method "dmp" "patch_apply"
+        ~doc:"Apply a patch on a text and return it"
+        [ curry_arg ~doc:"Array of patches" "patches" (array (abbrv "patch") @@
+        arg 0);
+          curry_arg ~doc:"Text to patch" "text" (string @@ arg 1)
+        ]
+        void;
     ]
   ]
