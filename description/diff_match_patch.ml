@@ -71,6 +71,9 @@ let _ =
           curry_arg ~doc:"text" "text2" (string @@ arg 1)
         ]
         (call_method "patch_main") (array string);
+      def_method "dmp" "patch_of_diffs"
+        ~doc:"Compute a patch from the two texts passed as arguments"
+        [ curry_arg ~doc:"Array of diffs" "diffs" (array (abbrv "diff") @@ arg 0)]
+        (call_method "patch_main") (array string);
     ]
   ]
-
