@@ -76,7 +76,7 @@ let _ =
         [ curry_arg ~doc:"Array of diffs" "diffs" (array (abbrv "diff") @@ arg 0)]
         (call_method "patch_main") (array (abbrv "patch"));
       map_method "dmp" "patch_main"
-        ~doc:"Compute a patch from a diff array and it associated text"
+        ~doc:"Compute a patch from a diff array and its associated text"
         [
           curry_arg ~doc:"Text" "text" (string @@ arg 0);
           curry_arg ~doc:"Array of diffs" "diffs" (array (abbrv "diff") @@ arg 1)
