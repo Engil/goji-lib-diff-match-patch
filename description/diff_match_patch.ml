@@ -1,5 +1,6 @@
 open Goji
 
+
 let package =
   register_package
     ~doc:"Google's diff-match-patch library"
@@ -64,12 +65,12 @@ let _ =
           "location" (int @@ arg 2)
         ]
       int;
-      map_method "dmp" "patch_main"
-        ~doc:"An array of differences is computed which describe the transformation of text1 into text2"
+      def_method "dmp" "patch_of_texts"
+        ~doc:"Compute a patch from the two texts passed as arguments"
         [ curry_arg ~doc:"text" "text1" (string @@ arg 0);
           curry_arg ~doc:"text" "text2" (string @@ arg 1)
         ]
-        (array string);
+        (call_method "patch_main") (array string);
     ]
   ]
 
