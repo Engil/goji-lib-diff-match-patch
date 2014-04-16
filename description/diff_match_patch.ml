@@ -55,7 +55,7 @@ let _ =
         [ curry_arg ~doc:"Array of diffs" "diffs" (array (abbrv "diff") @@ arg 0)]
         (call_method "diff_prettyHtml") string;
       def_method "dmp" "match_main"
-        ~doc:"Return the correct location of a givin pattern within a text"
+        ~doc:"Return the correct location of a given pattern within a text"
         [ curry_arg ~doc:"Text" "text" (string @@ arg 0);
           curry_arg ~doc:"Pattern" "pattern" (string @@ arg 1);
           curry_arg ~doc:"Represent the expect location for this patter"
