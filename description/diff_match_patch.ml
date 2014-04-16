@@ -22,6 +22,8 @@ let _ =
   [ section "Types" [
       def_type ~doc:"central object used by the library to perform actions"
       "dmp" (abstract any);
+      def_type ~doc:"Diff type"
+      "diff" (abstract any);
     ];
     section "Constructor" [
       def_constructor "dmp" "make"
@@ -30,12 +32,12 @@ let _ =
       (call_constructor (global "diff_match_patch"))
     ];
     section "Methods" [
-      def_method "dmp" "diff_main"
+      map_method "dmp" "diff_main"
         ~doc:"An array of differences is computed which describe the transformation of text1 into text2"
         [ curry_arg ~doc:"text" "text1" (string @@ arg 0);
           curry_arg ~doc:"text" "text2" (string @@ arg 1)
         ]
-        (call_method "diff_main") void;
+        (array string);
     ]
   ]
 
