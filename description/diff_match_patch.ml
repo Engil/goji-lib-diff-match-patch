@@ -13,7 +13,9 @@ let _ =
   ~license:License.apache_v2
   ~depends:[ "browser" ]
   ~grabber:Grab.(sequence [
-    exec "cp diff_match_patch.js goji_entry.js"
+    http_get
+    "https://neil.fraser.name/software/diff_match_patch/svn/trunk/javascript/diff_match_patch.js"
+    "goji_entry.js"
   ])
   ~doc:"Google's diff-match-patch Library"
   package "DiffMatchPatch"
@@ -26,6 +28,14 @@ let _ =
       ~doc:"constructor for the central object"
       []
       (call_constructor (global "diff_match_patch"))
+    ];
+    section "Methods" [
+      def_method "dmp" "diff_main"
+        ~doc:"An array of differences is computed which describe the transformation of text1 into text2"
+        [ curry_arg ~doc:"text" "text1" (string @@ arg 0);
+          curry_arg ~doc:"text" "text2" (string @@ arg 1)
+        ]
+        (call_method "diff_main") void;
     ]
   ]
 
