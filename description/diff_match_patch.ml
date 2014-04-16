@@ -21,9 +21,11 @@ let _ =
   package "DiffMatchPatch"
   [ section "Types" [
       def_type ~doc:"Central object used by the library to perform actions"
-      "dmp" (abstract any);
+        "dmp" (abstract any);
       def_type ~doc:"Diff type"
-      "diff" (abstract string);
+        "diff" (abstract string);
+      def_type ~doc:"Type representing a patch"
+        "patch" (abstract any);
     ];
     section "Constructor" [
       def_constructor "dmp" "make"
