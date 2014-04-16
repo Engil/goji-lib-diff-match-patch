@@ -48,22 +48,28 @@ let _ =
         ~doc:"Try to compact diffs to make more efficients ones"
         [ curry_arg ~doc:"Array of diffs" "diffs" (array (abbrv "diff") @@ arg 0)]
         (call_method "diff_cleanupEfficiency") void;
-      def_method "dmp" "diff_levenshtein"
+      map_method "dmp" "diff_levenshtein"
         ~doc:"Given a diff, measure its Levenshtein distance in terms of the number of inserted"
         [ curry_arg ~doc:"Array of diffs" "diffs" (array (abbrv "diff") @@ arg 0)]
-        (call_method "diff_levenshtein") int;
+      int;
       def_method "dmp" "diff_pretty_html"
         ~doc:"Return a formatted HTML of the diff"
         [ curry_arg ~doc:"Array of diffs" "diffs" (array (abbrv "diff") @@ arg 0)]
         (call_method "diff_prettyHtml") string;
-      def_method "dmp" "match_main"
+      map_method "dmp" "match_main"
         ~doc:"Return the correct location of a given pattern within a text"
         [ curry_arg ~doc:"Text" "text" (string @@ arg 0);
           curry_arg ~doc:"Pattern" "pattern" (string @@ arg 1);
           curry_arg ~doc:"Represent the expect location for this patter"
           "location" (int @@ arg 2)
         ]
-        (call_method "match_main") int;
+      int;
+      map_method "dmp" "patch_main"
+        ~doc:"An array of differences is computed which describe the transformation of text1 into text2"
+        [ curry_arg ~doc:"text" "text1" (string @@ arg 0);
+          curry_arg ~doc:"text" "text2" (string @@ arg 1)
+        ]
+        (array string);
     ]
   ]
 
