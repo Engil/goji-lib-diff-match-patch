@@ -28,7 +28,7 @@ let _ =
       def_type ~doc:"Type representing a patch"
         "patch" (abstract any);
     ];
-    section "Constructor" [
+    section "Constructor and helpers" [
       def_constructor "dmp" "make"
       ~doc:"constructor for the central object"
       []
@@ -57,6 +57,8 @@ let _ =
         ~doc:"Return a formatted HTML of the diff"
         [ curry_arg ~doc:"Array of diffs" "diffs" (array (abbrv "diff") @@ arg 0)]
         (call_method "diff_prettyHtml") string;
+      ];
+      section "Methods on match" [
       map_method "dmp" "match_main"
         ~doc:"Return the correct location of a given pattern within a text"
         [ curry_arg ~doc:"Text" "text" (string @@ arg 0);
@@ -65,6 +67,8 @@ let _ =
           "location" (int @@ arg 2)
         ]
       int;
+      ];
+      section "Methods on patches" [
       def_method "dmp" "patch_of_texts"
         ~doc:"Compute a patch from the two texts passed as arguments"
         [ curry_arg ~doc:"text" "text1" (string @@ arg 0);
@@ -97,5 +101,5 @@ let _ =
           curry_arg ~doc:"Text to patch" "text" (string @@ arg 1)
         ]
         void;
-    ]
+      ]
   ]
