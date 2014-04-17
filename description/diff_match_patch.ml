@@ -74,12 +74,12 @@ let _ =
         [ curry_arg ~doc:"text" "text1" (string @@ arg 0);
           curry_arg ~doc:"text" "text2" (string @@ arg 1)
         ]
-        (call_method "patch_main") (array (abbrv "patch"));
+        (call_method "patch_make") (array (abbrv "patch"));
       def_method "dmp" "patch_of_diffs"
         ~doc:"Compute a patch from the diffs array passed as arguments"
         [ curry_arg ~doc:"Array of diffs" "diffs" (array (abbrv "diff") @@ arg 0)]
-        (call_method "patch_main") (array (abbrv "patch"));
-      map_method "dmp" "patch_main"
+        (call_method "patch_make") (array (abbrv "patch"));
+      map_method "dmp" "patch_make"
         ~doc:"Compute a patch from a diff array and its associated text"
         [
           curry_arg ~doc:"Text" "text" (string @@ arg 0);
