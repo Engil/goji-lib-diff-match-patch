@@ -12,7 +12,7 @@ let _ =
   ~version:"20121119"
   ~author:"Neil Fraser"
   ~license:License.apache_v2
-  ~depends:[ "browser" ]
+  ~depends:[]
   ~grabber:Grab.(sequence [
     http_get
     "https://neil.fraser.name/software/diff_match_patch/svn/trunk/javascript/diff_match_patch.js"
