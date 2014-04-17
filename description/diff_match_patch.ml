@@ -40,7 +40,7 @@ let _ =
         [ curry_arg ~doc:"text" "text1" (string @@ arg 0);
           curry_arg ~doc:"text" "text2" (string @@ arg 1)
         ]
-        (array string);
+        (array (abbrv "diff"));
       def_method "dmp" "diff_cleanup_semantic"
         ~doc:"If a diff is to be human-readable, it should be passed to diff_cleanup_semantic."
         [ curry_arg ~doc:"Array of diffs" "diffs" (array (abbrv "diff") @@ arg 0)]
