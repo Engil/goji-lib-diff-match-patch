@@ -100,6 +100,6 @@ let _ =
         arg 0);
           curry_arg ~doc:"Text to patch" "text" (string @@ arg 1)
         ]
-        void;
+        (string @@ cell root 0);
       ]
   ]
