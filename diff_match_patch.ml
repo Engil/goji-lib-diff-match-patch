@@ -101,13 +101,13 @@ let _ =
         [int;string]) @@ arg 0)]
         (call_method "patch_make") (abbrv "patch");
 
-      def_method "dmp" "patch_make"
+      map_method "dmp" "patch_make"
         ~doc:"Compute a patch from a diff array and its associated text"
         [
           curry_arg ~doc:"Text" "text" (string @@ arg 0);
-          curry_arg ~doc:"Array of diffs" "diffs" ( array (abbrv "diff") @@ arg 1)
+          curry_arg ~doc:"Array of diffs" "diffs" (array (abbrv "diff") @@ arg 1)
         ]
-        (call_method "patch_make") (abbrv "patch");
+        (array (abbrv "patch"));
 
       def_method "dmp" "string_of_patches"
         ~doc:"Produce a string from a patch array"
@@ -121,7 +121,7 @@ let _ =
 
       map_method "dmp" "patch_apply"
         ~doc:"Apply a patch on a text and return it"
-        [ curry_arg ~doc:"Array of patches" "patches" ((abbrv "patch") @@ arg 0);
+        [ curry_arg ~doc:"Array of patches" "patches" (array (abbrv "patch") @@ arg 0);
           curry_arg ~doc:"Text to patch" "text" (string @@ arg 1)]
         (string @@ cell root 0);
       ]
