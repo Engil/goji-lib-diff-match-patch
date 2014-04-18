@@ -18,6 +18,8 @@ install: $(PACKAGE)
 uninstall: $(PACKAGE)
 	cd $(PACKAGE) && make uninstall
 
+reinstall: $(PACKAGE) uninstall install
+
 clean:
 	$(RM) -rf $(PACKAGE)
 	$(RM) -rf *~ *.cm* *.o
