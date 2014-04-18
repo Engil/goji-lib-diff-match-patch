@@ -24,7 +24,7 @@ let _ =
       def_type ~doc:"Central object used by the library to perform actions"
         "dmp" (abstract any);
       def_type ~doc:"Diff type"
-        "diff" (abstract string);
+        "diff" (public (array (tuple [int;string])));
       def_type ~doc:"Type representing a patch"
         "patch" (abstract any);
     ];
@@ -40,7 +40,7 @@ let _ =
         [ curry_arg ~doc:"text" "text1" (string @@ arg 0);
           curry_arg ~doc:"text" "text2" (string @@ arg 1)
         ]
-        (array (abbrv "diff"));
+        (array (tuple_cells [int; string]));
       def_method "dmp" "diff_cleanup_semantic"
         ~doc:"If a diff is to be human-readable, it should be passed to diff_cleanup_semantic."
         [ curry_arg ~doc:"Array of diffs" "diffs" (array (abbrv "diff") @@ arg 0)]
