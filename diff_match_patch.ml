@@ -79,7 +79,7 @@ let _ =
         ~doc:"Return the correct location of a given pattern within a text"
         [ curry_arg ~doc:"Text" "text" (string @@ arg 0);
           curry_arg ~doc:"Pattern" "pattern" (string @@ arg 1);
-          curry_arg ~doc:"Represent the expect location for this patter"
+          curry_arg ~doc:"Represent the expected location for this pattern"
           "location" (int @@ arg 2)
         ]
       int;
